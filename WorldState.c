@@ -198,9 +198,6 @@ int WorldStateTruth(const struct WorldState* _Input, const struct WorldState* _S
 		for(int j = 0; j < sizeof(WorldState_t); ++j) {
 			if(StateAtomDontCare(_State, i, j) != 0)
 				continue;
-			/*
-			 * NOTE: Will fail because the other opcodes have not been masked out.
-			 */
 			switch(StateAtomOpCode(_State, i, j)) {
 			case WSOP_EQUAL:
 				_Check = StateToByte(_Input, i, j) == StateToByte(_State, i, j);
