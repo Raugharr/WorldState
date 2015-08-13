@@ -5,7 +5,13 @@
 
 #include "WorldState.h"
 
-#include "sys/Math.h"
+#ifndef ffs
+#define ffs(_Int) __builtin_ffs(_Int)
+#endif
+
+#ifndef CHAR_BITS
+#define CHAR_BITS (8)
+#endif
 
 #define StateToByte(_State, _Idx, AtomIdx) ((((_State)->State[(_Idx)] & (~(_State)->DontCare[(_Idx)]))) >> ((AtomIdx) * CHAR_BITS) & 0xFF)
 #define StateAtomOffset(_Atom) (((_Atom) % sizeof(WorldState_t)) * CHAR_BITS)
